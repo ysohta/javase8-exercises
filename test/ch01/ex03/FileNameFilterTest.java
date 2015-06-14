@@ -1,6 +1,6 @@
 package ch01.ex03;
 
-import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+
+
 
 public class FileNameFilterTest {
 
@@ -38,5 +40,21 @@ public class FileNameFilterTest {
 	public void testExtractFilesWithMultiple() {
 		List<File> actuals = FileNameFilter.extractFilesWith(folder.getRoot(), "txt");
 		assertThat(actuals, hasItems(files.get(0), files.get(1)));
+	}
+	
+	@Test
+	public void testExtractFilesWithNonExisting() {
+		List<File> actuals = FileNameFilter.extractFilesWith(folder.getRoot(), "xt");
+		assertThat(actuals.isEmpty(), is(true));
+	}
+	
+	@Test(expected=NullPointerException.class)
+	public void testExtractFilesWithNullPointerExceptionDir(){
+		FileNameFilter.extractFilesWith(null, "txt");
+	}
+	
+	@Test(expected=NullPointerException.class)
+	public void testExtractFilesWithNullPointerExceptionExt(){
+		FileNameFilter.extractFilesWith(new File(""), null);
 	}
 }
