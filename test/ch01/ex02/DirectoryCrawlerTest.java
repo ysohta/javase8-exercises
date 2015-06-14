@@ -16,16 +16,16 @@ import org.junit.rules.TemporaryFolder;
 public class DirectoryCrawlerTest {
 	File testDir;
 	List<File> subDirs = new ArrayList<>();
-	
+
 	@Rule
 	public TemporaryFolder folder = new TemporaryFolder();
 
 	@Before
 	public void setup() throws IOException {
 		testDir = folder.newFolder("testdir");
-		subDirs.add(folder.newFolder("testdir/child"));
-		subDirs.add(folder.newFolder("testdir/child/grandchild1"));
-		subDirs.add(folder.newFolder("testdir/child/grandchild2"));
+		subDirs.add(folder.newFolder("testdir", "child"));
+		subDirs.add(folder.newFolder("testdir", "child", "grandchild1"));
+		subDirs.add(folder.newFolder("testdir", "child", "grandchild2"));
 		folder.newFile("testdir/sample.txt");
 	}
 
@@ -35,8 +35,8 @@ public class DirectoryCrawlerTest {
 		assertThat(actuals, hasItems(subDirs.toArray(new File[0])));
 	}
 
-	@Test(expected=NullPointerException.class)
-	public void testGetSubDirsUsingLambdaThrowsNullPointerException(){
+	@Test(expected = NullPointerException.class)
+	public void testGetSubDirsUsingLambdaThrowsNullPointerException() {
 		DirectoryCrawler.getSubDirsUsingLambda(null);
 	}
 
@@ -46,8 +46,8 @@ public class DirectoryCrawlerTest {
 		assertThat(actuals, hasItems(subDirs.toArray(new File[0])));
 	}
 
-	@Test(expected=NullPointerException.class)
-	public void testGetSubDirsUsingMethodRefThrowsNullPointerException(){
+	@Test(expected = NullPointerException.class)
+	public void testGetSubDirsUsingMethodRefThrowsNullPointerException() {
 		DirectoryCrawler.getSubDirsUsingMethodRef(null);
 	}
 }
