@@ -1,0 +1,11 @@
+Target file: DigitalClock_1_4.java (224L)
+Replaced file: DigitalClock_1_4Replaced.java (197L)
+
+Q. How many lines do become shorter after replacement?
+A. 27 lines.
+
+Q. Is that easier to read?
+A. Yes. Much simpler and more readable as context.
+
+Q. Did you use method reference?
+A. No.
