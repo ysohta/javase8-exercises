@@ -23,12 +23,13 @@ public class FileNameFilter {
 	 *            file extension
 	 * @return list of files
 	 * @throws NullPointerException
-	 *             if dir is null
+	 *             if dir or extension is null
 	 */
 	public static List<File> extractFilesWith(File dir, String extension) {
 		Objects.requireNonNull(dir, "dir must not be non null");
-
+		Objects.requireNonNull(extension, "extension must not be non null");
+		
 		// extension: captured variable in enclosing scope
-		return Arrays.asList(dir.listFiles((d, n) -> n.endsWith(extension)));
+		return Arrays.asList(dir.listFiles((d, n) -> n.endsWith("." + extension)));
 	}
 }
