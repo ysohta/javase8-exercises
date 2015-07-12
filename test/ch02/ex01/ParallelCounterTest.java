@@ -25,8 +25,7 @@ public class ParallelCounterTest {
 
 	@Test
 	public void testCountStringsOverLengthZero() {
-		int actual = 0;
-		actual = ParallelCounter.countStringsOverLength(Arrays.asList("a"), 0);
+		int actual = ParallelCounter.countStringsOverLength(Arrays.asList("a"), 0);
 		assertThat(actual, is(1));
 	}
 
