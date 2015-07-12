@@ -7,10 +7,30 @@ import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+/**
+ * This class consists of utility method to handle streams.
+ * 
+ * @author yukiohta
+ *
+ */
 public class StreamUtility {
 	private StreamUtility() {
 	}
 
+	/**
+	 * Returns zipped stream from two streams. Takes elements from first stream
+	 * and second one until reaching to the end in one of them. For example,
+	 * when {1, 3, 5} in first stream and {2, 4} in second stream are specified,
+	 * {1, 2, 3, 4, 5} would be returned as a result.
+	 * 
+	 * @param first
+	 *            first stream
+	 * @param second
+	 *            second stream
+	 * @return zipped stream
+	 * @throws NullPointerException
+	 *             if first or second is null
+	 */
 	public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
 		Objects.requireNonNull(first);
 		Objects.requireNonNull(second);
