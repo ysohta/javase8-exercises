@@ -1,0 +1,4 @@
+Compile error occurs when method with same name as stream() is already declared.
+Sample code is shown in ch01.ex12.CollectionImpl
+
+To keep binary compatibility between java7 and java8, default methods in JAR file have to be implemented. 

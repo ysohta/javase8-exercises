@@ -1,0 +1,15 @@
+#############################
+# Interface x Interface
+#############################
+			abstract	default		static
+abstract	compiled	compiled	compiled
+default		-			compiled	compiled
+static		-			-			compile error
+
+#############################
+# Interface x Abstract Class
+#############################
+			abstract	static
+abstract	compiled	compile error
+default		compiled	compile error
+static		compiled	compile error

@@ -1,0 +1,43 @@
+static <T> void	copy(List<? super T> dest, List<? extends T> src)
+=> default method in List interface
+
+static boolean	disjoint(Collection<?> c1, Collection<?> c2)
+=> default method in Collection interface
+
+empty* methods
+=> static method in for each interface
+
+static <T> void	fill(List<? super T> list, T obj)
+=> default method in List interface
+
+static int	frequency(Collection<?> c, Object o)
+=> default method in Collection interface
+
+max and min methods
+=> default method in Collection interface
+
+static <T> boolean	replaceAll(List<T> list, T oldVal, T newVal)
+=> default method in List interface
+
+static void	reverse(List<?> list)
+=> default method in List interface
+
+static void	rotate(List<?> list, int distance)
+=> default method in List interface
+
+static void	shuffle(List<?> list)
+=> default method in List interface
+
+static void	shuffle(List<?> list, Random rnd)
+=> default method in List interface
+
+void	sort(List<T> list)
+=> default method in List interface
+
+static <T> void	sort(List<T> list, Comparator<? super T> c)
+=> default method in List interface
+
+static void	swap(List<?> list, int i, int j)
+=> default method in List interface
+
+
