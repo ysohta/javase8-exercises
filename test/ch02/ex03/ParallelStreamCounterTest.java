@@ -1,15 +1,14 @@
 package ch02.ex03;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -43,33 +42,18 @@ public class ParallelStreamCounterTest {
 	public void testCountStringsOverLengthIllegalLength() {
 		ParallelStreamCounter.countStringsOverLength(Arrays.asList(), -1);
 	}
-	
+
 	@Test
-	public void testCountStringsOverLengthLargeFile() {
-		long actual = 0;
-		try (BufferedReader buf = Files.newBufferedReader(Paths.get("res/pg2600.txt"))) {
-			String line;
-			int nLines = 1000;
-			int cntLines = 0;
-			List<String> words = new ArrayList<>();
-			long elapsed = System.nanoTime();
-			while ((line = buf.readLine()) != null) {
-				words.addAll(Arrays.asList(line.split("[\\p{Punct}\\s]+")));
-				if(cntLines > nLines){
-					actual += ParallelStreamCounter.countStringsOverLength(words, 12);
-					cntLines = 0;
-				}else{
-					cntLines++;
-				}
-			}
-			elapsed = System.nanoTime() - elapsed;
-			// took 603,088,000 nanoseconds in my environment
-			System.out.println("["+getClass()+"] elapsed time[nsec]="+ elapsed);
-		} catch (IOException e) {
-			fail();
-		}
-		assertThat(actual, is(52078L));
+	public void testCountStringsOverLengthLargeFile() throws IOException {
+		List<String> words = Files.readAllLines(Paths.get("res/pg2600.txt")).stream()
+				.map((s) -> s.split("[\\p{Punct}\\s]+")).flatMap(Arrays::stream).collect(Collectors.toList());
+		
+		long elapsed = System.nanoTime();
+		long actual = ParallelStreamCounter.countStringsOverLength(words, 12);
+		elapsed = System.nanoTime() - elapsed;
+		
+		System.out.println("[" + getClass() + "] elapsed time[nsec]=" + elapsed);
+		assertThat(actual, is(1946L));
 	}
-	
-	
+
 }
