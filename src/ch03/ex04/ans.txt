@@ -1,0 +1,15 @@
+There are 4 Functional Interfaces whose class name contains Filter.
+2 out of 4 have extra values compared to Predicate.
+
+java.nio.file.DirectoryStream.Filter<T>
+	could throw IOException
+
+java.io.FileFilter
+	is equivalent to Predicate<File>
+	
+java.io.FilenameFilter
+	has two parameters
+	
+java.util.logging.Filter
+	is equivalent to Predicate<LogRecord>
+	
