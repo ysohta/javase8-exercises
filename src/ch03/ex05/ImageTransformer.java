@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class ImageTransformer extends Application {
 
 	/**
-	 * Transform image based on he transformer.
+	 * Transform image based on the transformer.
 	 * 
 	 * @param image
 	 *            input image
