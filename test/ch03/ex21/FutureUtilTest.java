@@ -31,8 +31,11 @@ public class FutureUtilTest {
 
 	@Test(expected = ExecutionException.class)
 	public void testMapExceptionThrown() throws InterruptedException, ExecutionException {
+		@SuppressWarnings("unused")
 		Future<String> future = pool.submit(() -> {
-			throw new Exception("in call method");
+			if (true)
+				throw new Exception("in call method"); // always throw exception
+			return ""; // return String to resolve ambiguity
 		});
 		Future<Integer> actual = FutureUtil.map(future, Integer::parseInt);
 		actual.get();
