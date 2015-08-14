@@ -20,8 +20,8 @@ public interface ColorTransformer {
 	 *            horizontal index of image
 	 * @param y
 	 *            vertical index of image
-	 * @param colorAtXY
-	 *            color at the position
+	 * @param reader
+	 *            image reader
 	 * @return transformed color
 	 */
 	Color apply(int x, int y, PixelReader reader);

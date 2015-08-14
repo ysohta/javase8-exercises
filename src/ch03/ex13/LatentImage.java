@@ -54,7 +54,6 @@ public class LatentImage {
 	 *            operation to convert color
 	 * @return updated image
 	 */
-
 	public LatentImage transform(UnaryOperator<Color> op) {
 		pendingOperations.add((x, y, r) -> op.apply(r.getColor(x, y)));
 		return this;
