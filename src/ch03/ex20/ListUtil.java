@@ -21,6 +21,8 @@ public class ListUtil {
 	 * @param f
 	 *            function to convert
 	 * @return list of U
+	 * @throws NullPointerException
+	 *             if list or f is null
 	 */
 	public static <T, U> List<U> map(List<T> list, Function<T, U> f) {
 		Objects.requireNonNull(list, "list must not be null");
