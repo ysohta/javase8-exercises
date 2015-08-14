@@ -1,0 +1,6 @@
+<U> U reduce(U identity,
+             BiFunction<U,? super T,U> accumulator,
+             BinaryOperator<U> combiner)
+
+On the first type parameter of accumulator in the method above, "U" should not be changed to "? super U".
+This is because input and output parameter type must be the same to keep the function associative.
