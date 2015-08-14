@@ -1,0 +1,2 @@
+Cannot define flatMap method in Pair class because the number of elements is not varied.
+Pair<T> object always has two T objects. 
