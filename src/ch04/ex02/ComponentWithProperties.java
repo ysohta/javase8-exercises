@@ -58,9 +58,7 @@ public class ComponentWithProperties {
     public final void setText(String val) {
         Objects.requireNonNull(val, "val must not be null");
         if (text == null) {
-            if (!DEFAULT_TEXT.equals(val)) {
-                text = new SimpleStringProperty(val);
-            }
+            text = new SimpleStringProperty(val);
         } else {
             text.set(val);
         }
@@ -100,9 +98,7 @@ public class ComponentWithProperties {
      */
     public final void setValue(double val) {
         if (value == null) {
-            if (DEFAULT_VALUE != val) {
-                value = new SimpleDoubleProperty(val);
-            }
+            value = new SimpleDoubleProperty(val);
         } else {
             value.set(val);
         }
@@ -188,9 +184,7 @@ public class ComponentWithProperties {
     public final void setObj(Person val) {
         Objects.requireNonNull(val, "val must not be null");
         if (obj == null) {
-            if (!initialObj.equals(val)) {
-                obj = new SimpleObjectProperty<>(val);
-            }
+            obj = new SimpleObjectProperty<>(val);
         } else {
             obj.set(val);
         }
