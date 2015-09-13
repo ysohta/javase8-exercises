@@ -18,19 +18,16 @@ public class DateTimeUtil {
     }
 
     /**
-     * Returns list of available time offset.
-     *
+     * Returns list of available time offset with filter.
+     * @param filter filter to select offset
      * @return list of time offset
      */
-    public static List<ZoneOffset> listAvailableOffsetFilterBy(Predicate<ZoneOffset> predicate) {
+    public static List<ZoneOffset> listAvailableOffsetFilterBy(Predicate<ZoneOffset> filter) {
         return ZoneId.getAvailableZoneIds()
                 .stream()
                 .map(ZoneId::of)
                 .map(e -> ZonedDateTime.now(e).getOffset())
-//                .filter(e -> e.compareTo(start) < 0 && e.compareTo(end) > 0)
-//                .peek(e -> System.out.println(e.getTotalSeconds()))
-//                .filter(e -> e.getTotalSeconds() % 3600 != 0)
-                .filter(predicate)
+                .filter(filter)
                 .sorted()
                 .collect(Collectors.toCollection(ArrayList::new));
     }
