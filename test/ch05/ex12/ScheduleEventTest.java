@@ -99,5 +99,4 @@ public class ScheduleEventTest {
         assertThat(list.get(index++).getNotification(), is(Duration.ofHours(1)));
         assertThat(list.get(index++).getNotification(), is(Duration.ofMinutes(30)));
     }
-
 }
