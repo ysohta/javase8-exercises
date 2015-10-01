@@ -1,0 +1,1 @@
+It is inappropriate to use LongAdder for incremental ID because increment method cannot provide ID value.
