@@ -64,12 +64,11 @@ public class WordManager {
 
         Files.lines(file.toPath())
                 .flatMap((s) -> Stream.of(s.split("[\\p{Punct}\\s]+")))
-                .forEach((s) -> map.merge(s, initialSet(file),
+                .forEach((s) -> map.merge(s, ConcurrentHashMap.newKeySet(),
                         (existingSet, newSet) -> {
-                            existingSet.add(file);
                             existingSet.addAll(newSet);
                             return existingSet;
-                        }));
+                        }).add(file));
     }
 
     /**
