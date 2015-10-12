@@ -1,0 +1,28 @@
+10 elements
+           sort:       132 msec
+   parallelSort:         6 msec
+
+100 elements
+           sort:        25 msec
+   parallelSort:        24 msec
+
+1000 elements
+           sort:       385 msec
+   parallelSort:       370 msec
+
+10000 elements
+           sort:      3423 msec
+   parallelSort:      9274 msec
+
+100000 elements
+           sort:     14582 msec
+   parallelSort:     24944 msec
+
+1000000 elements
+           sort:     99867 msec
+   parallelSort:     92899 msec
+
+10000000 elements
+           sort:    905871 msec
+   parallelSort:    447239 msec
+
