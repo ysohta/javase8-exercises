@@ -19,7 +19,7 @@ public class FileFinder {
 
     public static void main(String... args) throws IOException {
         if (args.length < 2) {
-            System.out.println("Usage: java FileFinder path word [word ...]");
+            System.out.println("Usage: java ch08.ex10.FileFinder path word [word ...]");
             System.exit(1);
         }
 
