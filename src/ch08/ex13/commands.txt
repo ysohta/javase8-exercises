@@ -1,0 +1,3 @@
+javac ch08/ex13/*java
+javac -XprintRounds -processor ch08.ex13.TestCaseProcessor ch08/ex13/*Test.java
+java ch08.ex13.TestRunner
