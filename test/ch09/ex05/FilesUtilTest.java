@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * This is test class of {@link ch09.ex05.FilesUtil}
@@ -41,10 +41,15 @@ public class FilesUtilTest {
         assertThat(expected, is(new String(actuals)));
     }
 
-    @Test(expected = IOException.class)
+    @Test
     public void testWriteReversedCharExistingOutFile() throws Exception {
         Path out = folder.newFile().toPath();
-        FilesUtil.writeReversedChar(in, out);
+        try {
+            FilesUtil.writeReversedChar(in, out);
+            fail();
+        } catch (IOException e) {
+            assertTrue(true);
+        }
     }
 
     @Test(expected = NullPointerException.class)

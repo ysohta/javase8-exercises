@@ -31,7 +31,7 @@ public class MinSeedFinder {
     }
 
     public static long getMinSeed(long nSeeds) {
-        if (n < 1)
+        if (nSeeds < 1)
             throw new IllegalArgumentException("nSeed must not be smaller than 1");
 
         return createSeeds().limit(nSeeds)
