@@ -23,8 +23,8 @@ public class LabeledPointTest {
         assertTrue(p1.compareTo(p2) == 0);
         assertTrue(p2.compareTo(p1) == 0);
 
-        assertTrue(p1.compareTo(p3) < 0);
-        assertTrue(p3.compareTo(p1) > 0);
+        assertTrue(p1.compareTo(p3) > 0);
+        assertTrue(p3.compareTo(p1) < 0);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class LabeledPointTest {
         LabeledPoint[] points = new LabeledPoint[]{p1, p2, p3, p4, p5};
         Arrays.sort(points);
 
-        assertArrayEquals(new LabeledPoint[]{p2, p5, p1, p3, p4}, points);
+        assertArrayEquals(new LabeledPoint[]{p2, p5, p1, p4, p3}, points);
     }
 
     @Test(expected = NullPointerException.class)
