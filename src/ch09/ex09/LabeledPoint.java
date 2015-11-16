@@ -96,21 +96,18 @@ public class LabeledPoint {
 
         LabeledPoint that = (LabeledPoint) o;
 
-        if (x != that.x) return false;
-        if (y != that.y) return false;
-        return !(label != null ? !label.equals(that.label) : that.label != null);
+        return Objects.equals(x, that.x)
+                && Objects.equals(y, that.y)
+                && Objects.equals(label, that.label);
     }
 
-    /**
+    /**∑
      * Returns hash value.
      *
      * @return hash code.
      */
     @Override
     public int hashCode() {
-        int result = label != null ? label.hashCode() : 0;
-        result = 31 * result + x;
-        result = 31 * result + y;
-        return result;
+        return Objects.hash(label, x, y);
     }
 }

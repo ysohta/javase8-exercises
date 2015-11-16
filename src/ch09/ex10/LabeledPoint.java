@@ -96,9 +96,9 @@ public class LabeledPoint implements Comparable<LabeledPoint> {
 
         LabeledPoint that = (LabeledPoint) o;
 
-        if (x != that.x) return false;
-        if (y != that.y) return false;
-        return !(label != null ? !label.equals(that.label) : that.label != null);
+        return Objects.equals(x, that.x)
+                && Objects.equals(y, that.y)
+                && Objects.equals(label, that.label);
     }
 
     /**
@@ -108,10 +108,7 @@ public class LabeledPoint implements Comparable<LabeledPoint> {
      */
     @Override
     public int hashCode() {
-        int result = label != null ? label.hashCode() : 0;
-        result = 31 * result + x;
-        result = 31 * result + y;
-        return result;
+        return Objects.hash(label, x, y);
     }
 
     /**
@@ -140,5 +137,14 @@ public class LabeledPoint implements Comparable<LabeledPoint> {
         }
 
         return Integer.compare(y, o.y);
+    }
+
+    @Override
+    public String toString() {
+        return "LabeledPoint{" +
+                "label='" + label + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
