@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * This is test class of {@link FilesUtil}
@@ -38,15 +38,21 @@ public class FilesUtilTest {
         FilesUtil.writeReversedLine(in, out);
 
         List<String> actuals = Files.readAllLines(out);
-        assertThat(actuals.size(), is(0));
+        assertThat(actuals.size(), is(2));
         assertThat(actuals.get(0), is("baz"));
         assertThat(actuals.get(1), is("foo bar"));
     }
 
-    @Test(expected = IOException.class)
+    @Test
     public void testWriteReversedLineExistingOutFile() throws Exception {
-        Path out = folder.newFile().toPath();
-        FilesUtil.writeReversedLine(in, out);
+        Path out = folder.newFolder().toPath();
+        try {
+            // cannot write to folder
+            FilesUtil.writeReversedLine(in, out);
+            fail();
+        } catch (IOException e) {
+            assertTrue(true);
+        }
     }
 
     @Test(expected = NullPointerException.class)

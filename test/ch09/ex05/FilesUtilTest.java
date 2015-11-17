@@ -43,8 +43,9 @@ public class FilesUtilTest {
 
     @Test
     public void testWriteReversedCharExistingOutFile() throws Exception {
-        Path out = folder.newFile().toPath();
+        Path out = folder.newFolder().toPath();
         try {
+            // cannot write to folder
             FilesUtil.writeReversedChar(in, out);
             fail();
         } catch (IOException e) {
