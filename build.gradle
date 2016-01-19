@@ -20,8 +20,15 @@ sourceSets {
         }
     }
     test {
-    	java {
+        java {
     		srcDir 'test'
     	}
+    }
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "short"
     }
 }
